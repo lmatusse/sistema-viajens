@@ -1,0 +1,149 @@
+/*.content-p
+{
+	padding-left: 200px;
+	padding-right: 200px;
+}*/
+.navbar
+{
+	background-color: rgb(204, 0, 0);
+}
+.btn-l
+{
+	background-color: rgb(204, 0, 0);
+}
+ .social-head{
+      padding-top: 5px;
+      padding-bottom:5px;
+      padding-right: 50px;
+      border-bottom: 1px solid #f8f9fa;
+      background-color: black;
+    }
+.head-link:hover{
+      color: #000 !important;
+      text-decoration: none;
+    }
+
+    .social-info{
+      display: inline-block;
+      padding: 5px;
+    }
+    .social-head a, .social-footer a{
+      color: #0098F7;
+    }
+
+    /*.social-head span, .social-footer span{
+      margin-right: 10px;
+    }
+*/
+    @media only screen and (max-width: 450px) {
+      .social-info{
+        display: block;
+        text-align: center;
+      }
+    }
+    .social-head a img{
+        height: 28px;
+    }
+    .navbar{
+      padding-top: 20px;
+     
+    }
+    .nav-link{
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 16px;
+      
+    }
+.nav-item{
+	color: black;
+}
+    .nav-link:hover{
+      border-bottom: 4px solid blue;
+    }
+band
+{
+	text-shadow: black 0.1em 0.1em 0.2em
+}
+    .navbar-default{
+      background-color: dark;
+      border: none;
+      border-radius: 0;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+    
+    .content-l
+    {
+    text-shadow: black 0.1em 0.1em 0.2em; 
+    padding-left: 50px;
+    font-size: 36px; 
+    font-family: Arial, Helvetica, sans-serif; 
+    color:white; 
+    position: relative;
+    bottom: 100px;
+    
+    }
+    .content-ll
+    {
+    text-shadow: black 0.1em 0.1em 0.2em; 
+    
+    font-size: 36px; 
+    font-family: Arial, Helvetica, sans-serif; 
+    color:white; 
+    position: relative;
+   
+    
+    }
+    a{
+    color:white;
+    }
+    .link
+    {
+    float: right;
+    width:60%;
+    }
+    .perfil
+    {
+    margin-right: 10px;
+    }
+    
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    .h3-l
+    {
+    text-align: center;
+   text-transform: uppercase;
+   text-shadow: black 0.1em 0.1em 0.2em; 
+   font-size: 36px;
+    }
+    imagem-l 
+    {
+	
+		display: block;
+    margin-left: auto;
+    margin-right: auto
+	}
+.content-lll
+    {
+    text-shadow: black 0.1em 0.1em 0.2em; 
+    box-shadow:black 0.1em 0.1em 0.2em;
+    font-size: 36px; 
+    font-family: Arial, Helvetica, sans-serif; 
+    color:white; 
+    position: relative;
+    bottom: 250px;
+    
+    }
+    

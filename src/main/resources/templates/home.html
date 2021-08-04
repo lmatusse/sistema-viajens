@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{adminlayout}">
+	<head>
+		<title>ViajaNet - Index</title>
+	</head>
+	
+        <body >
+            <h1 class="content-l" align="center">
+                ViajaNET<br>
+            </h1>
+          	<section class="content" layout:fragment="corpo">
+          	<img style="background-image: linear-gradient(15deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);" src="../img/aviaooff.jpeg" height="700px" width="100%" alt="foto">
+       
+            
+                <div class="content-l">
+                <h1 >Compre na ViajaNET</h1>
+                <h4></h4>
+                </div>
+                	
+          		<br>
+          		
+         		 <h3 class="h3-l">Quem somos</h3>
+         		 
+          		<br>
+          		
+          		<div class="container marketing">
+    			<div class="row">
+      			<div class="col-lg-4 imagem-l">
+       
+ 		<img style="display: block; margin-left: auto; margin-right: auto;" src="../img/mission.png" width="140" height="140" >
+        <h2 style="text-align: center;">Missao</h2>
+        <p style="text-align: center;">Alguma coisa sobre a Missao</p>
+        <p style="text-align: center;"><a class="btn btn-secondary btn-l" th:href="@{/viajanet/sobre}">Mais detalhes »</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+      <img style="display: block; margin-left: auto; margin-right: auto;" src="../img/visao.png" width="140" height="140" >
+        <h2 style="text-align: center;">Visao</h2>
+        <p style="text-align: center;">Alguma coisa sobre a visao</p>
+        <p style="text-align: center;"><a class="btn btn-secondary  btn-l" th:href="@{/viajanet/sobre}">Mais detalhes »</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+<img style="display: block; margin-left: auto; margin-right: auto;" src="../img/valor.png" width="140" height="140" >
+        <h2 style="text-align: center;">Valores </h2>
+        <p style="text-align: center;">Alguma coisa sobre os objectivos</p>
+        <p style="text-align: center;"><a class="btn btn-secondary btn-l" th:href="@{/viajanet/sobre}">Mais detalhes »</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+<p> <br> <br></p>
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">Preço</h1>
+      <p class="fs-5 text-muted"></p>
+    </div>
+   <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <div class="col">
+      
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+                 <img style="background-image: linear-gradient(15deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);" src="../img/conselho.jpeg"  width="100%" alt="foto">
+          
+            <h4  class="my-0 fw-normal content-lll">Maputo - Gaza</h4>
+          </div>
+          <div class="card-body">
+           
+             <h1 class="card-title pricing-card-title">8.000<small class="text-muted fw-light">MTS</small></h1>
+            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Faça a sua reserva</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+           <img style="background-image: linear-gradient(15deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);" src="../img/conselho.jpeg"  width="100%" alt="foto">
+          
+            <h4 class="my-0 fw-normal content-lll">Maputo - Inhambane</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">15.000<small class="text-muted fw-light">MTS</small></h1>
+            
+            <button type="button" class="w-100 btn btn-lg btn-primary">Faça a sua reserva</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card-header py-3 border-primary">
+          <img style="background-image: linear-gradient(15deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);" src="../img/conselho.jpeg"  width="100%" alt="foto">
+          
+            <h4 class="my-0 fw-normal content-lll">Maputo - Nampula</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">17.000<small class="text-muted fw-light">MTS</small></h1>
+            <button type="button" class="w-100 btn btn-lg btn-primary">Faça a sua reserva</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<p>
+<br>
+<br>
+</p>
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Vantagens da ViajaNet <span class="text-muted">Mais conforto para si no Boeing 737-700</span></h2>
+        <p class="lead">
+		Com capacidade para transportar 132 passageiros, esta é uma das aeronaves 
+		mais concorridas, pelo seu amplo espaço, comodidade nos assentos, entretenimento a 
+		bordo, e maior capacidade em termos de bagagem.
+        </p>
+      </div>
+      <div class="col-md-5">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../img/aviao1.jpeg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../img/aviao2.jpeg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../img/conselho.jpeg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <hr class="featurette-divider">
+
+
+    
+
+    <!-- /END THE FEATURETTES -->
+
+  </div>
+          
+          </section>         
+                <br>   
+        </body>     
+</html>
