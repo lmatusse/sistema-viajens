@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{adminlayout}"
+	>
+	<head>
+		<title>Cadastro de clientes</title>
+	</head>
+	<body>
+		<section layout:fragment="corpo">
+			<div class="container mt-4">
+				<div th:replace="fragments/mensagemSucesso.html :: alert"></div>
+				<div class="row">
+					<div class="col-12 col-sm-9">
+						<h4>Cadastro de Aeronaves</h4>
+					</div>
+					<div class="col-12 col-sm-3" style="text-align: right;">
+						<a type="button" class="btn btn-success" th:href="@{/aeronaves}">Pesquisar <i class="far fa-eye"></i></a>
+					</div>
+				</div>
+				<hr>
+				<div class="card">
+					<div class="card-body">
+						<form th:object="${aeronave}" method="post" th:action="@{/aeronaves/novo}">
+							<input type="hidden" th:field="*{codigo}"/>
+							<div class="row">
+								<div class="col-sm-12 col-md-8">
+									<label for="nome" class="form-label">Nome</label>
+									<input type="text" class="form-control" id="nome" th:field="*{referencia}">
+								</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="capacidade">Capacidade</label>
+									<input type="text" class="form-control" id="capacidade" th:field="*{capacidade}"/>
+								</div>
+							</div>
+							<div class="row mt-3">
+								<div class="col-sm-12 col-md-4">
+									<label for="companhiaAerea" class="form-label">Companhia Aerea</label>
+									<select class="form-control" id="companhiaAerea" th:field="${aeronave.companhiaAerea}">
+										<option value="">Selecione a companhia</option>
+										<option th:each="ca: ${companhiaAereas}"
+										th:value="${ca.codigo}"
+										th:text="${ca.nome}">
+										</option>
+									</select>
+								</div>
+								
+							</div>
+							<button type="submit" class="btn btn-primary mt-4">Cadastar <i class="fa fa-user-plus"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

@@ -46,10 +46,10 @@
 							<a class="nav-link  text-white" th:href="@{/index}">Home</a>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle text-white"role="button" data-bs-toggle="dropdown" th:href="@{#}">Reservas</a>
+							<a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" th:href="@{#}">Bilhete</a>
 							<ul class="dropdown-menu">
-								<li ><a class="dropdown-item text-dark" th:href="@{/bilhetes/novo}">Bilhete</a></li>
-								<li><a class="dropdown-item text-dark" th:href="@{/funcionarios}">Hotel</a>
+								<li><a class="dropdown-item " th:href="@{/bilhetes/novo}">Reservar</a></li>
+								<li><a class="dropdown-item" th:href="@{/bilhetes/pesquisa}">Pesquisar</a>
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
@@ -57,27 +57,15 @@
 							
 						</li>
 		
-						
-						<li class="nav-item dropdown">
-							<a class="nav-link text-white"role="button" data-bs-toggle="dropdown" th:href="@{/companhiaAereas}">Companhia Aerea</a>
-							
-						</li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right  ">
-      <li>
-      <a class="perfil" href="login.html">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-person-fill" viewBox="0 0 16 16">
-  	  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z"/>
-	  </svg>
-      <span class="glyphicon glyphicon-user"></span>
-       Sign Up
+					<ul class="nav navbar-nav navbar-right">
+      					<li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  						<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+						</svg>
+						<a class="perfil" href="@{/login}"><span class="glyphicon glyphicon-log-in">
+						</span> Login</a></li>
       
-       
-        </a>
-       </li>
-      <li><a class="perfil" href="/acessos/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      
-    </ul>
+   					 </ul>
 				</div>
 			</div>
 		</nav>

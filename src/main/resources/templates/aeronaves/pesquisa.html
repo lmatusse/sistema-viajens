@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+	<head>
+		<title>ViajaNet - Aeronaves</title>
+	</head>
+	<body>
+		<section layout:fragment="corpo">
+			<div class="container">
+				<div class="row mt-4">
+					<div class="col-sm-12 col-md-9">
+						<h4>Pesquisa de Aeronaves</h4>
+					</div>
+					<div class="col-sm-12 col-md-3" style="text-align:right;">
+						<a th:href="@{/aeronaves/novo}" type="button" class="btn btn-success">Cadastrar <i class="fa fa-user-plus"></i></a>
+					</div>
+				</div>
+				<hr>
+				<table class="table table-stripped table-bordered">
+					<tr>
+						<th class="col-1">Codigo</th>
+						<th class="col-3">Referencia</th>
+						<th class="col-2">Capacidade</th>
+						<th class="col-2">Companhia Aerea</th>
+						<th class="col-1 text-center"><i class="fa fa-cogs"></i></th>
+					</tr>
+					<tr th:each="aeronave: ${aeronaves}">
+						<td th:text="${aeronave.codigo}"></td>
+						<td th:text="${aeronave.referencia}"></td>
+						<td th:text="${aeronave.capacidade}"></td>
+						<td th:text="${aeronave.companhiaAerea?.nome}"></td>
+						<td class="text-center">
+							<a th:href="@{/aeronaves/{codigo}(codigo = ${aeronave.codigo})}" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar"><i class="fa fa-user-edit"></i></a> 
+							<a th:href="@{/aeronaves/remover/{codigo}(codigo = ${aeronave.codigo})}" data-bs-toggle="tooltip" data-bs-placement="right" title="Remover"><i class="fa fa-trash text-danger"></i></a> 
+						</td> 
+					</tr>
+					<tr th:if="${#lists.isEmpty(aeronaves)}">
+						<td colspan="6" class="text-center">Nenhum cadastro de cliente encontrado</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+	</body>
+</html>

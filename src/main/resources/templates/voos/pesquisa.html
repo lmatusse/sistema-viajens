@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{adminlayout}">
+	<head>
+		<title>ViajaNet - Voo's</title>
+	</head>
+	<body>
+		<section layout:fragment="corpo">
+			<div class="container">
+				<div class="row mt-4">
+					<div class="col-sm-12 col-md-9">
+						<h4>Pesquisa de Voos</h4>
+					</div>
+					<div class="col-sm-12 col-md-3" style="text-align:right;">
+						<a th:href="@{/voos/novo}" type="button" class="btn btn-success">Cadastrar <i class="fa fa-user-plus"></i></a>
+					</div>
+				</div>
+				<hr>
+				<table class="table table-stripped table-bordered">
+					<tr>
+						<th class="col-1">Codigo</th>
+						<th class="col-2">Data</th>
+						<th class="col-2">Origem-Destino</th>
+						<th class="col-1">Hora de Partida</th>
+						<th class="col-1">Hora de Chegada</th>
+						<th class="col-1">Preco</th>
+						<th class="col-2">Aeronave</th>
+						<th class="col-2 text-center"><i class="fa fa-cogs"></i></th>
+					</tr>
+					<tr th:each="voo: ${voos}">
+						<td th:text="${voo.codigo}"></td>
+						<td th:text="${voo.data}"></td>
+						<td>
+							<Span th:each="provincia: ${voo.provincia}">
+								<Span th:text="${provincia.nome}"></Span>
+							</Span>
+						</td>
+						<td th:text="${voo.horaPartida}"></td>
+						<td th:text="${voo.horaChegada}"></td>
+						<td th:text="${voo.preco}"></td>
+						<td th:text="${voo.aeronave?.referencia}"></td>
+						<td class="text-center">
+							<a th:href="@{/voos/{codigo}(codigo = ${voo.codigo})}" data-bs-toggle="tooltip" data-bs-placement="left" title="Editar"><i class="fa fa-user-edit"></i></a> 
+							<a th:href="@{/voos/remover/{codigo}(codigo = ${voo.codigo})}" data-bs-toggle="tooltip" data-bs-placement="right" title="Remover"><i class="fa fa-trash text-danger"></i></a> 
+						</td> 
+					</tr>
+					<tr th:if="${#lists.isEmpty(voos)}">
+						<td colspan="10" class="text-center">Nenhum cadastro de voo encontrado</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+	</body>
+</html>

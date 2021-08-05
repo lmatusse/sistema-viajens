@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+	<head>
+		<title>ViajaNet - Bilhetes</title>
+	</head>
+	<body>
+		<section layout:fragment="corpo">
+			<div class="container">
+				<div class="row mt-4">
+					<div class="col-sm-12 col-md-9">
+						<h4>Pesquisa de Bilhetes</h4>
+					</div>
+					<div class="col-sm-12 col-md-3" style="text-align:right;">
+						<a th:href="@{/bilhetes/novo}" type="button" class="btn btn-success">Cadastrar <i class="fa fa-user-plus"></i></a>
+					</div>
+				</div>
+				<hr>
+				<table class="table table-stripped table-bordered">
+					<tr>
+						<th class="col-1">Codigo</th>
+						<th class="col-3">Data de Reserva</th>
+						<th class="col-2">Origem</th>
+						<th class="col-2">Destino</th>
+						<th class="col-1">Data do voo</th>
+						<th class="col-1">Codigo do cliente</th>
+						<th class="col-1 text-center"><i class="fa fa-cogs"></i></th>
+					</tr>
+					<tr th:each="bilhete: ${bilhetes}">
+						<td th:text="${bilhete.codigo}"></td>
+						<td th:text="${bilhete.dataReserva}"></td>
+						<td th:text="${bilhete.voo?.origem}"></td>
+						<td th:text="${bilhete.voo?.destino}"></td>
+						<td th:text="${bilhete.voo?.data}"></td>
+						<td th:text="${bilhete.cliente?.codigo}"></td>
+						<td class="text-center">
+							<a th:href="@{/bilhetes/remover/{codigo}(codigo = ${bilhete.codigo})}" data-bs-toggle="tooltip" data-bs-placement="right" title="Remover"><i class="fa fa-trash text-danger"></i></a> 
+						</td> 
+					</tr>
+					<tr th:if="${#lists.isEmpty(bilhetes)}">
+						<td colspan="7" class="text-center">Nenhum cadastro de Bilhete encontrado</td>
+					</tr>
+				</table>
+			</div>
+		</section>
+	</body>
+</html>

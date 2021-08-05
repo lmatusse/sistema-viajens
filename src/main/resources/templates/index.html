@@ -33,31 +33,32 @@
  		<img style="display: block; margin-left: auto; margin-right: auto;" src="../img/mission.png" width="140" height="140" >
         <h2 style="text-align: center;">Missao</h2>
         <p style="text-align: center;">Alguma coisa sobre a Missao</p>
-        <p style="text-align: center;"><a class="btn btn-secondary btn-l" th:href="@{/viajanet/sobre}">Mais detalhes »</a></p>
+        <p style="text-align: center;"><a class="btn btn-secondary btn-l" th:href="@{/sobre}">Mais detalhes »</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
       <img style="display: block; margin-left: auto; margin-right: auto;" src="../img/visao.png" width="140" height="140" >
         <h2 style="text-align: center;">Visao</h2>
         <p style="text-align: center;">Alguma coisa sobre a visao</p>
-        <p style="text-align: center;"><a class="btn btn-secondary  btn-l" th:href="@{/viajanet/sobre}">Mais detalhes »</a></p>
+        <p style="text-align: center;"><a class="btn btn-secondary  btn-l" th:href="@{/sobre}">Mais detalhes »</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
 <img style="display: block; margin-left: auto; margin-right: auto;" src="../img/valor.png" width="140" height="140" >
         <h2 style="text-align: center;">Valores </h2>
         <p style="text-align: center;">Alguma coisa sobre os objectivos</p>
-        <p style="text-align: center;"><a class="btn btn-secondary btn-l" th:href="@{/viajanet/sobre}">Mais detalhes »</a></p>
+        <p style="text-align: center;"><a class="btn btn-secondary btn-l" th:href="@{/sobre}">Mais detalhes »</a></p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
 
     <!-- START THE FEATURETTES -->
-<p> <br> <br></p>
-<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-4 fw-normal">Preço</h1>
+
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center preco">
+
+      <h1 class="display-4 fw-normal h1-preco">Preço</h1>
       <p class="fs-5 text-muted"></p>
     </div>
    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-      <div class="col">
+      <div class="col-md-4 voo">
       
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-header py-3">
@@ -68,11 +69,11 @@
           <div class="card-body">
            
              <h1 class="card-title pricing-card-title">8.000<small class="text-muted fw-light">MTS</small></h1>
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary">Faça a sua reserva</button>
+            <a th:href="@{reserva/bilhete}" target="blank" class="w-100 btn btn-lg btn-outline-primary">Faça a sua reserva</a>
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-4">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-header py-3">
            <img style="background-image: linear-gradient(15deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);" src="../img/conselho.jpeg"  width="100%" alt="foto">
@@ -82,11 +83,11 @@
           <div class="card-body">
             <h1 class="card-title pricing-card-title">15.000<small class="text-muted fw-light">MTS</small></h1>
             
-            <button type="button" class="w-100 btn btn-lg btn-primary">Faça a sua reserva</button>
+           <a th:href="@{reserva/bilhete}" target="blank" class="w-100 btn btn-lg btn-outline-primary">Faça a sua reserva</a>
           </div>
         </div>
       </div>
-      <div class="col">
+      <div class="col-md-4">
         <div class="card mb-4 rounded-3 shadow-sm border-primary">
           <div class="card-header py-3 border-primary">
           <img style="background-image: linear-gradient(15deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);" src="../img/conselho.jpeg"  width="100%" alt="foto">
@@ -95,7 +96,7 @@
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">17.000<small class="text-muted fw-light">MTS</small></h1>
-            <button type="button" class="w-100 btn btn-lg btn-primary">Faça a sua reserva</button>
+           <a th:href="@{reserva/bilhete}" target="blank" class="w-100 btn btn-lg btn-outline-primary">Faça a sua reserva</a>
           </div>
         </div>
       </div>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{adminlayout}"
+	>
+	<head>
+		<title>Cadastro de clientes</title>
+	</head>
+	<body>
+		<section layout:fragment="corpo">
+			<div class="container mt-4">
+				<div th:replace="fragments/mensagemSucesso.html :: alert"></div>
+				<div class="row">
+					<div class="col-12 col-sm-9">
+						<h4>Cadastro de Voos</h4>
+					</div>
+					<div class="col-12 col-sm-3" style="text-align: right;">
+						<a type="button" class="btn btn-success" th:href="@{/voos}">Pesquisar <i class="far fa-eye"></i></a>
+					</div>
+				</div>
+				<hr>
+				<div class="card">
+					<div class="card-body">
+						<form th:object="${voo}" method="post" th:action="@{/voos/novo}">
+							<input type="hidden" th:field="*{codigo}"/>
+							<div class="row">
+								<div class="col-sm-12 col-md-3">
+									<label for="data" class="form-label">Data</label>
+									<input type="date" class="form-control" id="data" th:field="*{data}">
+								</div>
+								<div class="row mt-3">
+								<div class="col-sm-12 col-md-4">
+									<label for="origem" class="form-label">Origem</label>
+									<select class="form-control" id="origem" th:field="${voo.provincia}">
+										<option value="">Selecione a Origem</option>
+										<option th:each="ca: ${provincias}"
+										th:value="${ca.codigo}"
+										th:text="${ca.nome}">
+										</option>
+									</select>
+								</div>
+							</div>
+								<div class="row mt-3">
+								<div class="col-sm-12 col-md-4">
+									<label for="destino" class="form-label">Destino</label>
+									<select class="form-control" id="destino" th:field="${voo.provincia}">
+										<option value="">Selecione o Destino</option>
+										<option th:each="ca: ${provincias}"
+										th:value="${ca.codigo}"
+										th:text="${ca.nome}">
+										</option>
+									</select>
+								</div>
+							</div>
+								<div class="col-sm-12 col-md-4">
+									<label for="hora_partida">Hora de Partida</label>
+									<input type="time" class="form-control" id="hora_partida" th:field="*{horaPartida}"/>
+								</div>
+							
+							<div class="col-sm-12 col-md-3">
+									<label for="hora_chegada">Hora de Chegada</label>
+									<input type="time" class="form-control" id="hora_chegada" th:field="*{horaChegada}"/>
+								</div>
+							
+							<div class="row mt-3">
+								<div class="col-sm-12 col-md-4">
+									<label for="companhiaAerea" class="form-label">Aeronave</label>
+									<select class="form-control" id="aeronave" th:field="${voo.aeronave}">
+										<option value="">Selecione a aeronave</option>
+										<option th:each="ca: ${aeronaves}"
+										th:value="${ca.codigo}"
+										th:text="${ca.referencia}">
+										</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-sm-12 col-md-3">
+									<label for="data" class="form-label">Preco</label>
+									<input type="text" class="form-control" id="data" th:field="*{preco}">
+								</div>
+							<button type="submit" class="btn btn-primary mt-4">Cadastar <i class="fa fa-user-plus"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

@@ -106,6 +106,8 @@ band
     .perfil
     {
     margin-right: 10px;
+    color:black;
+    font-weight: bold;
     }
     
       .bd-placeholder-img {
@@ -114,6 +116,14 @@ band
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
+      }
+      .preco
+      {
+      margin-top: 100px;
+      }
+      .h1-preco
+      {
+      margin-bottom: 50px; 
       }
 
       @media (min-width: 768px) {
@@ -146,4 +156,22 @@ band
     bottom: 250px;
     
     }
+    .py-3
+    {
+    margin-top: 50px;
+    }
     
+    footer {
+	padding: 10px;
+	padding-top: 30px;
+}
+footer a
+{
+	color:white;
+	
+}
+footer a:hover
+{
+	color: red;
+	text-decoration: none;
+}
