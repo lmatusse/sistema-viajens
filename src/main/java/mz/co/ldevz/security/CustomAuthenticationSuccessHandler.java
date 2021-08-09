@@ -12,7 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import mz.co.ldevz.entity.User;
+import mz.co.ldevz.entity.Usuario;
 import mz.co.ldevz.services.UserService;
 
 @Component
@@ -26,7 +26,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 			throws IOException, ServletException {
 
 		String email = authentication.getName();
-		User user = userService.findUserByEmail(email);
+		Usuario user = userService.findUserByEmail(email);
 		
 		// now place in the session
 		HttpSession session = request.getSession();
@@ -34,7 +34,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		
 		// forward to home page
 		
-		response.sendRedirect(request.getContextPath() + "/");
+		response.sendRedirect(request.getContextPath() + "/bilhetes/novo");
 	}
 
 

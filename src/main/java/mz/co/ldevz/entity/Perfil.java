@@ -8,37 +8,28 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "`role`")
-public class Role {
+@Table(name = "`perfil`")
+public class Perfil extends AbstractEntity {
 
 	// Role fields and annotate with it's column to connect to jpa entity manager
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "role_id")
-	private Long id;
-
 	@Column(name = "role_name")
 	private String name;
 
 	// Role super and fields constructors
+	public Perfil() {super();}
 	
-	public Role() {
+	public Perfil(Long id)
+	{
+		super.getId();
 	}
-
-	public Role(String name) {
+	public Perfil(String name) {
 		this.name = name;
 	}
 
 	// Role getters and setters fields
 	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 
 	public String getName() {
 		return name;
@@ -52,6 +43,6 @@ public class Role {
 
 	@Override
 	public String toString() {
-		return "Role{" + "id=" + id + ", name='" + name + '\'' + '}';
+		return "Role{" + "id=" + super.getId() + ", name='" + name + '\'' + '}';
 	}
 }

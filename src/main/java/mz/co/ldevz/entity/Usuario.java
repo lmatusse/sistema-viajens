@@ -2,6 +2,7 @@ package mz.co.ldevz.entity;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,16 +17,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
-@Table(name = "`user`")
-public class User {
+@Table(name = "`usuario`")
+public class Usuario extends AbstractEntity {
 
 	// User fields and annotate with it's column to connect to jpa entity manager
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
-	private int id;
 
 	@Column(name = "user_username")
 	private String username;
@@ -35,36 +32,42 @@ public class User {
 
 	@Column(name = "user_email")
 	private String email;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "bilhete_id")
+	private Collection<Bilhete> bilhetes;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "users_roles", 
-	joinColumns = @JoinColumn(name = "user_id"), 
-	inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Collection<Role> roles;
+	@JoinTable(name = "usuarios_perfil", 
+	joinColumns = @JoinColumn(name = "usuario_id"), 
+	inverseJoinColumns = @JoinColumn(name = "perfil_id"))
+	private Collection<Perfil> roles;
 	
-
+	public void addPerfil(UsuarioPerfil tipo) {
+		if (this.roles == null) {
+			this.roles = new ArrayList<>();
+		}
+		this.roles.add(new Perfil(tipo.getCod()));
+	}
+	public Usuario() {
+		super();
+	}
 	// User super and fields constructors
-
-	public User() {
+public Usuario(Long id)
+{
+	super.setId(id);
+}
+	/*public Usuario() {
 	}
 
-	public User(String userName, String password, String email, Collection<Role> roles) {
+	public Usuario(String userName, String password, String email, Collection<Perfil> roles) {
 		this.username = userName;
 		this.password = password;
 		this.email = email;
 		this.roles = roles;
 		
-	}
+	}*/
 
 	// User getters and setters fields
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getUsername() {
 		return username;
@@ -90,13 +93,14 @@ public class User {
 		this.email = email;
 	}
 
-	public Collection<Role> getRoles() {		
+	public Collection<Perfil> getRoles() {		
 		return roles;
 	}
 
-	public void setRoles(Collection<Role> roles) {
-		Collection<Role> roles1 = new ArrayList<>();
-		roles1.add(new Role("ROLE_EMPLOYEE"));
+	public void setRoles(List<Perfil> list) {
+		Collection<Perfil> roles1 = new ArrayList<>();
+		roles1.add(new Perfil("CLIENTE"));
+
 		
 		this.roles = roles1;
 	}
@@ -107,7 +111,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userName=" + username + ", password=" + password + ", email=" + email + ", roles="
+		return "User [id=" + super.getId() + ", userName=" + username + ", password=" + password + ", email=" + email + ", roles="
 				+ roles +  "]";
 	}
 

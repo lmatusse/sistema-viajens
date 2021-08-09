@@ -21,11 +21,10 @@
 				<hr>
 				<div class="card">
 					<div class="card-body">
-						<form th:object="${bilhete}" method="post" th:action="@{/login}">
+						<form th:object="${bilhete}" method="post" th:action="@{/bilhetes/novo}">
 							<div class="row">
 									<input type="hidden"  th:field="*{dataReserva}">
-									<input type="hidden" th:field="*{usuario}">
-									<input type="hidden" th:field="*{voo}">
+								
 							</div>
 				<hr>
 				<table class="table table-stripped table-bordered">
@@ -37,9 +36,10 @@
 						<th class="col-1">Hora de Chegada</th>
 						<th class="col-1">Preco</th>
 						<th class="col-2">Aeronave</th>
+						<th class="col-2">Cliente</th>
 						<th class="col-2 text-center"><i class="fa fa-cogs"></i></th>
 					</tr>
-					<tr th:each="voo: ${voos}" >
+					<tr th:each="voo: ${voos}">
 						<td th:text="${voo.id}"></td>
 						<td th:text="${voo.data}"></td>
 						<td>
@@ -47,17 +47,12 @@
 								<Span th:text="${provincia.nome}"></Span>
 							</Span>
 						</td>
-						<td >
-						
-						</td>
 						<td th:text="${voo.horaPartida}"></td>
 						<td th:text="${voo.horaChegada}"></td>
 						<td th:text="${voo.preco}"></td>
 						<td th:text="${voo.aeronave?.referencia}"></td>
-						<td th:text="${voo.aeronave?.referencia}"></td>
-						
 						<td class="text-center">
-							<a th:href="@{/login}" data-bs-toggle="tooltip" data-bs-placement="left" title="Reservar"><i class="fa fa-user-edit"></i></a> 
+							<a th:href="@{/bilhetes/salvar}" data-bs-toggle="tooltip" data-bs-placement="left" title="Reservar"><i class="fa fa-user-edit"></i></a> 
 						</td> 
 					</tr>
 				</table>

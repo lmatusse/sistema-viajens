@@ -22,7 +22,7 @@
 				<div class="card">
 					<div class="card-body">
 						<form th:object="${aeronave}" method="post" th:action="@{/aeronaves/novo}">
-							<input type="hidden" th:field="*{codigo}"/>
+							<input type="hidden" th:field="*{id}"/>
 							<div class="row">
 								<div class="col-sm-12 col-md-8">
 									<label for="nome" class="form-label">Nome</label>
@@ -39,7 +39,7 @@
 									<select class="form-control" id="companhiaAerea" th:field="${aeronave.companhiaAerea}">
 										<option value="">Selecione a companhia</option>
 										<option th:each="ca: ${companhiaAereas}"
-										th:value="${ca.codigo}"
+										th:value="${ca.id}"
 										th:text="${ca.nome}">
 										</option>
 									</select>

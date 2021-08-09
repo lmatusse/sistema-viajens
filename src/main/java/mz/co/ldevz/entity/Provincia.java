@@ -8,25 +8,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+	@SuppressWarnings("serial")
 	@Entity
-	public class Provincia 
+	public class Provincia extends AbstractEntity
 	{
-		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		//@EqualsAndHashCode.Include
-		private Long codigo;
+		
 		
 		private String nome;
 		
 		@ManyToMany(mappedBy="provincia")
 		private List <Voo> voo;
-
-		public Long getCodigo() {
-			return codigo;
-		}
-
-		public void setCodigo(Long codigo) {
-			this.codigo = codigo;
+public Provincia() {
+	// TODO Auto-generated constructor stub
+}
+		public Provincia(Long id)
+		{
+			super.setId(id);
 		}
 
 		public String getNome() {

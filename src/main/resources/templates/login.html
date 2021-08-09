@@ -29,14 +29,7 @@
 				<h1>Sign Up</h1>
 
 				<!-- Place for icons: social content ... -->
-				<div class="social-container">
-					<a href="https://github.com/Henry-Azer" target="_blank" class="social"><i
-							class="fab fa-github"></i></a> <a href="https://www.linkedin.com/in/henry-azer-1220121a7/"
-						target="_blank" class="social"><i class="fab fa-linkedin"></i></a>
-					<a href="https://www.facebook.com/HeNaRyAzEr/" target="_blank" class="social"><i
-							class="fab fa-facebook"></i></a>
-				</div>
-
+				
 				<!-- messages: error, alert etc ... -->
 
 				<!-- Check for registration error -->
@@ -102,7 +95,12 @@
 							th:text="'Password Verify:' + ${err}" />
 					</ul>
 				</div>
-
+				<select class="form-control" id="perfis">
+										<option value="">Selecione a companhia</option>
+										<option value="ADMIN">Administrador</option>
+										<option value="CLIENTE">cliente</option>
+										<option value="FUNCIONARIO">Funcionario</option>
+									</select>
 				<!-- sign up button submit -->
 				<br>
 				<button id="button" >Submit</button>

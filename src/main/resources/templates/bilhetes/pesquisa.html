@@ -22,21 +22,23 @@
 					<tr>
 						<th class="col-1">Codigo</th>
 						<th class="col-3">Data de Reserva</th>
-						<th class="col-2">Origem</th>
-						<th class="col-2">Destino</th>
-						<th class="col-1">Data do voo</th>
+						<th class="col-2">Voo</th>
+						<!-- <th class="col-2">Destino</th>
+						<th class="col-1">Data do voo</th> -->
 						<th class="col-1">Codigo do cliente</th>
 						<th class="col-1 text-center"><i class="fa fa-cogs"></i></th>
 					</tr>
 					<tr th:each="bilhete: ${bilhetes}">
-						<td th:text="${bilhete.codigo}"></td>
+						<td th:text="${bilhete.id}"></td>
 						<td th:text="${bilhete.dataReserva}"></td>
-						<td th:text="${bilhete.voo?.origem}"></td>
+						
+						<!-- <td th:text="${bilhete.voo?.origem}"></td>
 						<td th:text="${bilhete.voo?.destino}"></td>
-						<td th:text="${bilhete.voo?.data}"></td>
-						<td th:text="${bilhete.cliente?.codigo}"></td>
+						<td th:text="${bilhete.voo?.data}"></td>-->
+						<td th:text="${bilhete.usuario}"></td>
+						<td th:text="${bilhete.usuario}"></td>
 						<td class="text-center">
-							<a th:href="@{/bilhetes/remover/{codigo}(codigo = ${bilhete.codigo})}" data-bs-toggle="tooltip" data-bs-placement="right" title="Remover"><i class="fa fa-trash text-danger"></i></a> 
+							<a th:href="@{/bilhetes/remover/{codigo}(codigo = ${bilhete.id})}" data-bs-toggle="tooltip" data-bs-placement="right" title="Remover"><i class="fa fa-trash text-danger"></i></a> 
 						</td> 
 					</tr>
 					<tr th:if="${#lists.isEmpty(bilhetes)}">

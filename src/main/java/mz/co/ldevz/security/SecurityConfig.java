@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import mz.co.ldevz.entity.UsuarioPerfil;
 import mz.co.ldevz.services.UserService;
 
 @Configuration
@@ -23,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
-
+	private static final String CLIENTE = UsuarioPerfil.CLIENTE.getDesc();
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
@@ -31,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception
 	{
+		
 		web.ignoring()
 		.antMatchers("/css/***")
 		.antMatchers("/image/***")
@@ -43,8 +45,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http
 		.authorizeRequests()
+		.antMatchers("/css/***","/image/***","/js/***","webfonts/***").permitAll()
 		.antMatchers("/login").permitAll()
-		.antMatchers("/", "/", "/your-reservations").hasAnyRole("EMPLOYEE")
+		//.antMatchers("/", "/", "/your-reservations").hasAnyRole("EMPLOYEE")
+		.antMatchers("/index").permitAll()
+		.antMatchers("/bilhetes/salvar").hasAuthority(CLIENTE)
+		
+		//.anyRequest().authenticated()
 		.and()
 		.formLogin()
 			.loginPage("/login")

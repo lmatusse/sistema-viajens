@@ -16,14 +16,12 @@ import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+@SuppressWarnings("serial")
 @Entity
 
-public class Voo 
+public class Voo extends AbstractEntity
 {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@EqualsAndHashCode.Include
-	private Long codigo;
+	
 	
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
 	private LocalDate data;
@@ -48,12 +46,12 @@ public class Voo
 	)
 	private List<Provincia> provincia;
 
-	public Long getCodigo() {
-		return codigo;
+	public Voo() {
+		// TODO Auto-generated constructor stub
 	}
-
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
+	public Voo(Long id)
+	{
+		super.setId(id);
 	}
 
 	public LocalDate getData() {

@@ -7,29 +7,25 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@SuppressWarnings("serial")
 @Entity
 
-public class CompanhiaAerea 
+public class CompanhiaAerea extends AbstractEntity
 {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@EqualsAndHashCode.Include
-	private Long codigo;
+	
 	
 	private String nome;
 	
 	@ManyToOne
 	@JoinColumn(name = "codigo_nacionalidade", nullable = false)
 	private Nacionalidade nacionalidade;
-
-	public Long getCodigo() {
-		return codigo;
+ public CompanhiaAerea() {
+	// TODO Auto-generated constructor stub
+}
+	public CompanhiaAerea(Long id)
+	{
+		super.setId(id);
 	}
-
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
-	}
-
 	public String getNome() {
 		return nome;
 	}

@@ -11,8 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import mz.co.ldevz.entity.Bilhete;
+import mz.co.ldevz.entity.Usuario;
+import mz.co.ldevz.entity.Voo;
 import mz.co.ldevz.services.BilheteService;
+import mz.co.ldevz.services.UserService;
+import mz.co.ldevz.services.UserServiceImpl;
 import mz.co.ldevz.services.VooService;
+
 
 
 
@@ -25,22 +30,30 @@ public class BilheteController
 	private VooService vooService;
 	@Autowired
 	private BilheteService bilheteService;
-	
+	@Autowired
+	private UserServiceImpl service;
 	@GetMapping("/novo")
 	public ModelAndView novo(Bilhete bilhete)
 	{
 		return new ModelAndView("bilhetes/cadastro").addObject("voos",vooService.listar());
 	}
-	
-	@PostMapping("/novo")
-	public ModelAndView salvar(Bilhete bilhete, RedirectAttributes attributes)
+	/*@GetMapping("/novoo")
+	public ModelAndView novoN(Bilhete bilhete)
 	{
+		ModelAndView modelAndView= new ModelAndView("bilhetes/usuaro");
+		modelAndView.addObject("usuarios", service.listar());
+		return modelAndView;
+	}*/
+	@PostMapping("/novo")
+	public ModelAndView salvar(Bilhete bilhete, RedirectAttributes attributes, Usuario usuario)
+	{
+		
 		bilheteService.salvar(bilhete);
-		attributes.addFlashAttribute("mensagem", String.format("Bilhete da data %s cadastrado com sucesso", bilhete.getCodigo()));
-		return new ModelAndView("redirect:/bilhetes/novo");
+		attributes.addFlashAttribute("mensagem", String.format("Bilhete da data %s cadastrado com sucesso", bilhete.getId()));
+		return new ModelAndView("redirect:/bilhetes");
 	}
 	
-	@GetMapping("/pesquisa")
+	@GetMapping
 	public ModelAndView listar()
 	{
 		return new ModelAndView("bilhetes/pesquisa").addObject("bilhetes", bilheteService.listar());

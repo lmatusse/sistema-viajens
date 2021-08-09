@@ -12,7 +12,7 @@
 	<groupId>henry</groupId>
 	<artifactId>Hotel-Reservation-Postgres</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Hotel-Reservation-Postgres</name>
+	<name>Sistema de venda de bilhetes</name>
 	<description>Spring Boot Hotel Reservation App</description>
 
 	<properties>

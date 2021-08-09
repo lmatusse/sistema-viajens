@@ -7,14 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@SuppressWarnings("serial")
 @Entity
 
-public class Aeronave 
+public class Aeronave extends AbstractEntity
 {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@EqualsAndHashCode.Include
-	private Long codigo;
 	
 	private String referencia;
 	
@@ -24,14 +21,13 @@ public class Aeronave
 	@JoinColumn(name = "codigo_companhia_area")
 	private CompanhiaAerea companhiaAerea;
 
-	public Long getCodigo() {
-		return codigo;
+	public Aeronave() {
+		// TODO Auto-generated constructor stub
 	}
-
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
+	public Aeronave(Long id)
+	{
+		super.setId(id);
 	}
-
 	public String getReferencia() {
 		return referencia;
 	}

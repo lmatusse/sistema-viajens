@@ -20,6 +20,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import mz.co.ldevz.entity.Bilhete;
+import mz.co.ldevz.entity.Perfil;
+import mz.co.ldevz.entity.Usuario;
+import mz.co.ldevz.services.BilheteService;
+import mz.co.ldevz.services.PerfilService;
 import mz.co.ldevz.services.UserService;
 import mz.co.ldevz.temp.CurrentUser;
 
@@ -27,11 +35,15 @@ import mz.co.ldevz.temp.CurrentUser;
 public class userController {
 
 	private UserService userService;
-
+	private PerfilService perfilService;
+	private BilheteService service;
 	
+
 	@Autowired
-	public userController(UserService userService) {
+	public userController(UserService userService, PerfilService perfilService, BilheteService service) {
 		this.userService = userService;
+		this.perfilService=perfilService;
+		this.service=service;
 		
 	}
 
@@ -51,24 +63,28 @@ public class userController {
 
 	
 	@GetMapping("/login")
-	public String loginPage(Model model) {
-
+	public String loginPage(ModelAndView modell, Model  model,Bilhete bilhete, RedirectAttributes attributes, Usuario usuario) {
 		
+		//modell.addObject("usuarios", userService.getLoggedUserId());
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		System.out.println(auth.toString());
+		
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			return "redirect:/";
+			service.salvar(bilhete);
+			attributes.addFlashAttribute("mensagem", String.format("Bilhete da data %s cadastrado com sucesso", bilhete.getId()));
+			return "redirect:/bilhetes";
 		}
 		
 		
 		model.addAttribute("newUser", new CurrentUser());
-
 		return "/login";
+
 	}
 
 	
 	@PostMapping("/processRegistration")
 	public String processRegistrationForm(@Valid @ModelAttribute("newUser") CurrentUser currentUser,
-			BindingResult theBindingResult, Model model) {
+			BindingResult theBindingResult, Model model, Perfil perfil) {
 
 		
 		if (userService.findUserByEmail(currentUser.getEmail()) != null) {
@@ -80,6 +96,7 @@ public class userController {
 
 	
 		userService.saveUser(currentUser);
+		perfilService.salvar(perfil);
 		model.addAttribute("registrationSuccess", "registration Success.");
 
 		return "redirect:/login";
@@ -107,7 +124,7 @@ public class userController {
 			new SecurityContextLogoutHandler().logout(request, response, auth);
 		}
 
-		return "redirect:/login-form-page?logout";
+		return "redirect:/?logout";
 	}
 
 }

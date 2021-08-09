@@ -1,6 +1,7 @@
 package mz.co.ldevz.services;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,19 +9,28 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import mz.co.ldevz.entity.Bilhete;
+import mz.co.ldevz.entity.Voo;
 import mz.co.ldevz.repository.BilheteRepository;
+import mz.co.ldevz.repository.UserRep;
 
 @Service
-public class BilheteService {
+public class BilheteService implements Bilheteinter {
 
 	@Autowired
 	private BilheteRepository bilheteRepository;
-	
+	@Autowired
+	private UserRep userRep;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private VooService vooService;
 	@Transactional
 	public Bilhete salvar(Bilhete bilhete)
+	
 	{
+		Voo voo=new Voo();
+		bilhete.setUsuario(userService.getLoggedUserId());
 		bilhete.setDataReserva(LocalDate.now());
 		return bilheteRepository.save(bilhete);
 	}
@@ -39,5 +49,10 @@ public class BilheteService {
 	public void remove(Long codigo)
 	{
 		bilheteRepository.deleteById(codigo);
+	}
+	@Override
+	@Transactional
+	public Collection<Bilhete> getReservationsForLoggedUser() {
+		return bilheteRepository.findAllByUsuario((userService.getLoggedUserId()));
 	}
 }

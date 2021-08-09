@@ -3,12 +3,12 @@ package mz.co.ldevz.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import mz.co.ldevz.entity.Role;
+import mz.co.ldevz.entity.Perfil;
 
 
 
 @Repository
-public interface RoleRep extends JpaRepository<Role, Integer> {
+public interface RoleRep extends JpaRepository<Perfil, Integer> {
 
-	Role findByName(String roleName);
+	Perfil findByName(String roleName);
 }
