@@ -25,8 +25,6 @@ import mz.co.ldevz.temp.CurrentUser;
 @Service
 public class UserServiceImpl implements UserService {
 	
-	// service pattern to manage transactionals  
-	//	and handel services for user between server and client
 
 	private UserRep userRepository;
 	
@@ -38,11 +36,10 @@ public class UserServiceImpl implements UserService {
 		this.roleRepository = roleRepository;
 	}
 
-	// bcrypt passwords
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
-	// check existing of user by email
+	
 	@Override
 	@Transactional
 	public Usuario findUserByEmail(String email) {
@@ -50,21 +47,16 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findByEmail(email);
 	}
 
-	// transfer data between temp User and User class after check it to save it 
 	@Override
 	@Transactional
 	
 	public void saveUser(CurrentUser currentUser) {
 		Usuario user = new Usuario();
-		//Perfil perfil=new Perfil();
-
-		// bcrypt password to save it hashing in database
+		
 		user.setPassword(passwordEncoder.encode(currentUser.getPassword()));
 		
 		user.setUsername(currentUser.getUsername());
 		user.setEmail(currentUser.getEmail());
-				// give user default role of "employee"
-		//user.setRoles(roleRepository.findByName(perfil.getName()));
 		user.setRoles(Arrays.asList(roleRepository.findByName("CLIENTE")));
 		/*user.setRoles(Arrays.asList(roleRepository.findByName("ADMIN")));
 		user.setRoles(Arrays.asList(roleRepository.findByName("FUNCIONARIO")));*/
@@ -79,7 +71,7 @@ public class UserServiceImpl implements UserService {
 		return user.getId();
 	}
 
-	// security login check valid username and role
+	
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -92,12 +84,11 @@ public class UserServiceImpl implements UserService {
 				mapRolesToAuthorities(user.getRoles()));
 	}
 
-	// Authority role for user
+	
 	private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Perfil> roles) {
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
 	}
 
-	// get current logged user email using security user details principal
 	private String loggedUserEmail() {
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

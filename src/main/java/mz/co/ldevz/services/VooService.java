@@ -38,8 +38,8 @@ public class VooService
 	{
 		vooRepository.deleteById(codigo);
 	}
-	public List<Voo> pesquisarNome(String nome)
+	/*public List<Voo> pesquisarNome(String nome)
 	{
 		return vooRepository.findCaByName(nome);
-	}
+	}*/
 }

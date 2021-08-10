@@ -12,9 +12,6 @@ import mz.co.ldevz.entity.Provincia;
 import mz.co.ldevz.repository.ProvinciaRepository;
 
 
-
-
-
 @Service
 public class ProvinciaService 
 {

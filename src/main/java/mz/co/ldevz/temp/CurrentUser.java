@@ -8,7 +8,7 @@ import mz.co.ldevz.validation.ValidEmail;
 
 // field match annotation for passwords
 @FieldMatch.List({
-    @FieldMatch(first = "password", second = "matchingPassword", message = "The password fields must match")
+    @FieldMatch(first = "password", second = "matchingPassword", message = "Os campos de senha devem corresponde")
 })
 public class CurrentUser {
 	

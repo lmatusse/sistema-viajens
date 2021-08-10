@@ -19,17 +19,20 @@ public class BilheteService implements Bilheteinter {
 
 	@Autowired
 	private BilheteRepository bilheteRepository;
+	
 	@Autowired
 	private UserRep userRep;
+	
 	@Autowired
 	private UserService userService;
+	
 	@Autowired
 	private VooService vooService;
+	
 	@Transactional
 	public Bilhete salvar(Bilhete bilhete)
 	
 	{
-		Voo voo=new Voo();
 		bilhete.setUsuario(userService.getLoggedUserId());
 		bilhete.setDataReserva(LocalDate.now());
 		return bilheteRepository.save(bilhete);

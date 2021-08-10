@@ -11,5 +11,5 @@ import mz.co.ldevz.entity.Bilhete;
 public interface BilheteRepository extends JpaRepository<Bilhete, Long>{
 	
 	Collection<Bilhete> findAllByUsuario(Long id);
-	//public Collection<Bilhete> getReservationsForLoggedUser();
+	
 }

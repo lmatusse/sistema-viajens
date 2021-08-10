@@ -27,7 +27,7 @@ import mz.co.ldevz.entity.Bilhete;
 import mz.co.ldevz.entity.Perfil;
 import mz.co.ldevz.entity.Usuario;
 import mz.co.ldevz.services.BilheteService;
-import mz.co.ldevz.services.PerfilService;
+//import mz.co.ldevz.services.PerfilService;
 import mz.co.ldevz.services.UserService;
 import mz.co.ldevz.temp.CurrentUser;
 
@@ -35,14 +35,14 @@ import mz.co.ldevz.temp.CurrentUser;
 public class userController {
 
 	private UserService userService;
-	private PerfilService perfilService;
+	//private PerfilService perfilService; PerfilService perfilService,
 	private BilheteService service;
 	
 
 	@Autowired
-	public userController(UserService userService, PerfilService perfilService, BilheteService service) {
+	public userController(UserService userService, BilheteService service) {
 		this.userService = userService;
-		this.perfilService=perfilService;
+		//this.perfilService=perfilService;
 		this.service=service;
 		
 	}
@@ -82,7 +82,7 @@ public class userController {
 	}
 
 	
-	@PostMapping("/processRegistration")
+	/*@PostMapping("/processRegistration")
 	public String processRegistrationForm(@Valid @ModelAttribute("newUser") CurrentUser currentUser,
 			BindingResult theBindingResult, Model model, Perfil perfil) {
 
@@ -101,9 +101,32 @@ public class userController {
 
 		return "redirect:/login";
 
-	}
+	}*/
 
 	
+	// registration process page
+		@PostMapping("/processRegistration")
+		public String processRegistrationForm(@Valid @ModelAttribute("newUser") CurrentUser currentUser,
+				BindingResult theBindingResult, Model model) {
+
+			// check the database if user already exists
+			if (userService.findUserByEmail(currentUser.getEmail()) != null) {
+				model.addAttribute("newUser", new CurrentUser());
+				model.addAttribute("registrationError", "Email already exists.");
+
+				return "login";
+			}
+
+			// create user account
+			userService.saveUser(currentUser);
+			model.addAttribute("registrationSuccess", "registration Success.");
+
+			return "redirect:/login";
+
+		}
+
+
+
 	
 
 	
